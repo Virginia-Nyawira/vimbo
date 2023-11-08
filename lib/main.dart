@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vimbo/newmain.dart';
 
 void main() {
   runApp(const MyApp());

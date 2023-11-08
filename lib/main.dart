@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'new_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -26,9 +28,16 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const color2 = Color(0xffe5edec);
-    var sizedBox =const SizedBox(
+    var sizedBox = const SizedBox(
       height: 5,
     );
+    newScreen() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const NewScreen()),
+      );
+    }
+
     return Material(
         child: SingleChildScrollView(
       child: Container(
@@ -102,7 +111,7 @@ class HomePage extends StatelessWidget {
             ),
             Center(
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: newScreen,
                   color: color2,
                   icon: const Icon(
                     Icons.web_sharp,
@@ -133,25 +142,26 @@ class HomePage extends StatelessWidget {
               height: 10,
             ),
             GestureDetector(
+                onTap: newScreen,
                 child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: const Color(0xff34998b),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Start Questionnaire',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: const Color(0xff34998b),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Start Questionnaire',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            )),
+                )),
             const SizedBox(
               height: 10,
             ),
@@ -172,10 +182,10 @@ class HomePage extends StatelessWidget {
                   children: [
                     const InfoCard(
                         color: Color(0xffd5f8e6),
-                        icon:  Icon(
-                            Icons.play_circle_fill,
-                            color: Color.fromARGB(255, 236, 227, 227),
-                          ),
+                        icon: Icon(
+                          Icons.play_circle_fill,
+                          color: Color.fromARGB(255, 236, 227, 227),
+                        ),
                         info:
                             'No time for reading? No sweat! Take a listen to what Vimbo is all ablout and where you can start.',
                         title: 'Vimbo in 1min',
@@ -266,13 +276,14 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     sizedBox,
-                   const InfoCard(
-                      color: Color(0xffffc273), 
-                      info: 'Immerse yourself with knowledge to understand your journey', 
-                      title: 'My well Being Machine', 
-                      buttonTitle: 'View', 
+                    const InfoCard(
+                      color: Color(0xffffc273),
+                      info:
+                          'Immerse yourself with knowledge to understand your journey',
+                      title: 'My well Being Machine',
+                      buttonTitle: 'View',
                       cardTitle: 'Take a tour',
-                      )
+                    )
                   ],
                 ),
               ),
@@ -293,22 +304,32 @@ class QuerysContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 206, 210, 216),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Center(
-        child: Text(
-          query,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w500,
-            height: 1.6000000636,
-            letterSpacing: 0.200000003,
-            color: Color(0xff1a3b44),
+    newScreen() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const NewScreen()),
+      );
+    }
+
+    return GestureDetector(
+      onTap: newScreen,
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 206, 210, 216),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Center(
+          child: Text(
+            query,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              height: 1.6000000636,
+              letterSpacing: 0.200000003,
+              color: Color(0xff1a3b44),
+            ),
           ),
         ),
       ),
@@ -329,10 +350,18 @@ class InfoCard extends StatelessWidget {
       required this.info,
       required this.title,
       required this.buttonTitle,
-      required this.cardTitle, this.icon});
+      required this.cardTitle,
+      this.icon});
 
   @override
   Widget build(BuildContext context) {
+    newScreen() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const NewScreen()),
+      );
+    }
+
     return Card(
         color: color,
         child: Padding(
@@ -340,23 +369,26 @@ class InfoCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(0, 0, 0, 6),
-                width: 71,
-                height: 16,
-                decoration: BoxDecoration(
-                  color: const Color(0x7fffffff),
-                  borderRadius: BorderRadius.circular(19),
-                ),
-                child: Center(
-                  child: Text(
-                    cardTitle,
-                    style: const TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w500,
-                      height: 1.6,
-                      letterSpacing: 0.200000003,
-                      color: Color(0xff1a3b44),
+              GestureDetector(
+                onTap: newScreen,
+                child: Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 6),
+                  width: 71,
+                  height: 16,
+                  decoration: BoxDecoration(
+                    color: const Color(0x7fffffff),
+                    borderRadius: BorderRadius.circular(19),
+                  ),
+                  child: Center(
+                    child: Text(
+                      cardTitle,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500,
+                        height: 1.6,
+                        letterSpacing: 0.200000003,
+                        color: Color(0xff1a3b44),
+                      ),
                     ),
                   ),
                 ),
@@ -371,25 +403,28 @@ class InfoCard extends StatelessWidget {
                     color: Color(0xff1a3b44),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(0, 6, 0, 6),
-                    padding: const EdgeInsets.fromLTRB(14, 5.5, 10.5, 5.5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: const Color(0xff1a3b44),
-                    ),
-                    child: Center(
-                      child: Row(
-                        children: [
-                        icon?? const SizedBox(),
-                          Text(buttonTitle,
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 233, 226, 226),
-                                fontSize: 12,
-                              )),
-                        ],
+                GestureDetector(
+                  onTap: newScreen,
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(0, 6, 0, 6),
+                      padding: const EdgeInsets.fromLTRB(14, 5.5, 10.5, 5.5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: const Color(0xff1a3b44),
+                      ),
+                      child: Center(
+                        child: Row(
+                          children: [
+                            icon ?? const SizedBox(),
+                            Text(buttonTitle,
+                                style: const TextStyle(
+                                  color: Color.fromARGB(255, 233, 226, 226),
+                                  fontSize: 12,
+                                )),
+                          ],
+                        ),
                       ),
                     ),
                   ),
